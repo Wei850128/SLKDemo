@@ -18,20 +18,22 @@ class GCDDemoViewController: UIViewController {
     //題目(2)
     func initData() {
         // 最高順位
-        let queue1 = DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated)
-        let queue2 = DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated)
-        // 最低順位
-        let queue3 = DispatchQueue.global(qos: DispatchQoS.QoSClass.utility)
+        let group: DispatchGroup = DispatchGroup()
         
-        queue1.async {
+        let queue1 = DispatchQueue(label: "queue1", attributes: .concurrent)
+        queue1.async(group: group) {
+            // 事件A
             HttpManager.shared.callAPI1()
         }
-
-        queue2.async {
+        let queue2 = DispatchQueue(label: "queue2", attributes: .concurrent)
+        queue2.async(group: group) {
+            // 事件B
             HttpManager.shared.callAPI2()
-            queue3.async {
-                print("Complete")
-            }
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            // 已處理完上述兩件事件
+            print("Complete")
         }
     }
 }
