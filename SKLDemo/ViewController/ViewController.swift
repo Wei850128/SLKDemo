@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         
         //題目(3)
         HttpManager.shared.Test { () -> String in
-            return "Complete"
+            return "Complete"  
         }
     }
 }
