@@ -16,10 +16,13 @@ class ViewController: UIViewController {
         
         //題目(3)
         HttpManager.shared.Test { () -> String in
-            return "Complete"  
+            return "Complete"
         }
     }
 }
+
+
+
 
 extension ViewController: TestDelegate {
     //題目(5)
