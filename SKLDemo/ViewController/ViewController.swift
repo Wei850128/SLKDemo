@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        
         //題目(3)
         HttpManager.shared.Test { () -> String in
             return "Complete"

@@ -13,11 +13,11 @@ protocol TestDelegate {
     
 }
 
-var delegate: TestDelegate?
 
 class TableViewDemoViewController: UIViewController {
     
     var data: Lauguage?
+    var delegate: TestDelegate?
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
