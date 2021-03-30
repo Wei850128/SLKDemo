@@ -25,10 +25,10 @@ class HttpManager {
         }
     }
     
-    func Test(callback:() -> String) {
+    func Test(callback:(() -> Void)?) {
         for i in 0..<100 {
             print(i)
         }
-        print(callback())
+        callback?()
     }
 }
