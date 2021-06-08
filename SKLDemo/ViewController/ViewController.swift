@@ -21,6 +21,10 @@ class ViewController: UIViewController {
 }
 
 
+
+
+
+
 extension ViewController: TestDelegate {
     //題目(5)
     func getName(name: String) {
